@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+	<style>
+		body {
+			font-family: Verdana;
+			font-size: 20px;
+			text-align: center;
+		}
+		
+		#change, #reset {
+			background-color: transparent;
+			align: center;
+			border-radius: 4px;
+			padding: 1em;
+		}
+	</style>
+</head>
+
+	<button id="change" type="button"> Change Colour </button>
+	<button id="reset" type="button"> Reset </button>
+	
+	<p id="colour"></p>
+
+<script>
+	//array of colours
+	var colors = ['red', 'blue', 'green', 'yellow', 'orange', 'pink', 'aqua', 'purple', 'skyBlue', 'magenta'];
+	
+	//add event listeners
+	document.getElementById("change").addEventListener("click", changeColor);
+	document.getElementById("reset").addEventListener("click", resetColor);
+	
+	//change BG colour to one of the above in the array
+	function changeColor() {
+		//ensure BG colour is different each time
+		do {
+			var newColor = colors[Math.floor(Math.random() * colors.length)];
+		} while(document.body.style.backgroundColor == newColor)
+		
+		document.getElementById("colour").innerHTML = newColor;
+		document.body.style.backgroundColor = newColor;
+	};
+	
+	//reset background colour to white
+	function resetColor() {
+		document.body.style.backgroundColor = ''; //set to null
+		document.getElementById("colour").innerHTML = "white";
+	};
+</script>
+
+</body>
+</html>
