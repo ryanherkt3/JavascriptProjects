@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+	<style>
+		body {
+			font-family: Verdana;
+			font-size: 20px;
+			text-align: center;
+		}
+		
+		#counter {font-size: 60px;}
+		
+		#lower, #add {
+			background-color: darkBlue;
+			color: white;
+			align: center;
+			border-radius: 4px;
+			padding: 1em;
+		}
+	</style>
+</head>
+
+	<p id="counter">0</p>
+	
+	<button id="add" type="button"> Add Count </button>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	<button id="lower" type="button"> Lower Count </button>	
+
+<script>
+	//get current count
+	var currentNum = Number(document.getElementById("counter").innerHTML);
+	
+	//add event listeners
+	document.getElementById("add").addEventListener("click", addCount);
+	document.getElementById("lower").addEventListener("click", lowerCount);
+	
+	//change colour of text based on value
+	function colourCSS() {
+		if (currentNum < 0) {
+			document.getElementById("counter").style.color = "red";
+		}
+		else if (currentNum == 0) {
+			document.getElementById("counter").style.color = "black";
+		}
+		else {
+			document.getElementById("counter").style.color = "green";
+		}
+		
+		document.getElementById("counter").innerHTML = currentNum;
+	}
+	
+	function addCount() {
+		currentNum++;
+		colourCSS();
+	}
+	
+	function lowerCount() {
+		currentNum--;
+		colourCSS();
+	}
+</script>
+
+</body>
+</html>
